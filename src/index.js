@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {render} from 'react-dom'
 import {BrowserRouter, NavLink} from "react-router-dom"
 import {Route, Switch} from "react-router"
@@ -49,9 +49,19 @@ const Scripted = ({apiUri}) => {
 
     switch (state) {
         case 'error':
-            return <p>Login failed.</p>
+            return <>
+                <p>Login failed.</p>
+                <button type="button" onClick={() => setState('initial')}>
+                    Back
+                </button>
+            </>
         case 'loggedIn':
-            return <p>Login successful.</p>
+            return <>
+                <p>Login successful.</p>
+                <button type="button" onClick={() => setState('initial')}>
+                    Back
+                </button>
+            </>
         default:
             return <form onSubmit={login} className={s.form}>
                 <label>Username:<input
@@ -71,11 +81,20 @@ const Choose = () => <p>
 
 const Ui = () => {
     const [uri, setUri] = useState('http://localhost:3000')
+    useEffect(() => {
+        const uri = window.localStorage.getItem('uri')
+        if (uri) setUri(uri)
+    }, [])
+
+    const changeUri = uri => {
+        window.localStorage.setItem('uri', uri)
+        setUri(uri)
+    }
 
     return <BrowserRouter>
         <header className={s.header}><Navigation/></header>
         <main className={s.main}>
-            <Uri uri={uri} onChange={u => setUri(u)}/>
+            <Uri uri={uri} onChange={changeUri}/>
             <Switch>
                 <Route path="/traditional"><Traditional postUri={uri}/></Route>
                 <Route path="/scripted"><Scripted apiUri={uri}/></Route>

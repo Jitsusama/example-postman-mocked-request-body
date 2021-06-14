@@ -38,7 +38,14 @@ paths:
             text/html:
               examples:
                 successful:
-                  value: <html><body><p>Login successful.</p></body></html>
+                  value: |-
+                    <html>
+                    <head><title>Success</title></head>
+                    <body>
+                    <p>Login successful.</p>
+                    <button type="button" onclick="window.history.back()">Back</button>
+                    </body>
+                    </html>
               schema:
                 type: string
         401:
@@ -47,6 +54,13 @@ paths:
             text/html:
               examples:
                 failed:
-                  value: <html><body><p>Login failed.</p></body></html>
+                  value: |-
+                    <html>
+                    <head><title>Failure</title></head>
+                    <body>
+                    <p>Login failed.</p>
+                    <button type="button" onclick="window.history.back()">Back</button>
+                    </body>
+                    </html>
               schema:
                 type: string
