@@ -23,9 +23,9 @@ const Uri = ({uri, onChange}) => {
 }
 
 const Traditional = ({postUri}) => <form
-    action={postUri} method="POST" className={s.form}>
+    action={postUri} method="POST" className={s.form} autoComplete="on">
     <label>Username:<input
-        name="username" type="text"/></label>
+        name="username" type="text" autoComplete="username"/></label>
     <label>Password:<input
         name="password" type="password" autoComplete="password"/></label>
     <button type="submit">Login</button>
@@ -38,8 +38,10 @@ const Scripted = ({apiUri}) => {
 
     const login = e => {
         e.preventDefault()
-        const body = new URLSearchParams({username, password})
-        fetch(`${apiUri}/login`, {method: 'POST', body})
+        fetch(`${apiUri}/login`, {
+            method: 'POST',
+            body: new URLSearchParams({username, password})
+        })
             .then(response => {
                 if (!response.ok) throw new Error('login failed')
             })
@@ -63,9 +65,9 @@ const Scripted = ({apiUri}) => {
                 </button>
             </div>
         default:
-            return <form onSubmit={login} className={s.form}>
+            return <form onSubmit={login} className={s.form} autoComplete="on">
                 <label>Username:<input
-                    type="text" value={username}
+                    type="text" value={username} autoComplete="username"
                     onChange={e => setUsername(e.target.value)}/></label>
                 <label>Password:<input
                     type="password" value={password} autoComplete="password"
