@@ -1,0 +1,52 @@
+openapi: 3.0.3
+info:
+  title: Login API
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /login:
+    post:
+      summary: Login
+      requestBody:
+        description: Credentials
+        content:
+          application/x-www-form-urlencoded:
+            examples:
+              successful:
+                value:
+                  username: bob
+                  password: hope
+              failed:
+                value:
+                  username: bob
+                  password: hopeless
+            schema:
+              type: object
+              required:
+                - username
+                - password
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        200:
+          description: Successfully logged in.
+          content:
+            text/html:
+              examples:
+                successful:
+                  value: <html><body><p>Login successful.</p></body></html>
+              schema:
+                type: string
+        401:
+          description: Invalid credentials.
+          content:
+            text/html:
+              examples:
+                failed:
+                  value: <html><body><p>Login failed.</p></body></html>
+              schema:
+                type: string

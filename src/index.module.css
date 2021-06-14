@@ -1,0 +1,83 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    margin: .5em 0;
+    justify-content: center;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav *:not(:first-child) {
+    margin-left: .5em;
+}
+
+.nav a {
+    color: darkslateblue;
+}
+
+.nav .active {
+    font-weight: bold;
+}
+
+.uri {
+    margin: .5em 0;
+}
+
+.uri input {
+    font-size: inherit;
+    font-family: inherit;
+    display: block;
+    border-radius: .5em;
+    border: none;
+    border-bottom: 1px solid lightgray;
+    width: 26em;
+    padding: .25em .5em;
+    text-align: center;
+}
+
+.uri input:focus {
+    outline: none;
+    border-color: darkslateblue;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: .5em 0;
+}
+
+.form *:not(:first-child) {
+    margin-top: .5em;
+}
+
+.form input {
+    font-size: inherit;
+    font-family: inherit;
+    display: block;
+    border: 1px solid lightgray;
+    border-radius: .25em;
+    padding: .25em .5em;
+}
+
+.form input:focus {
+    outline: none;
+    border-color: darkslateblue;
+}
+
+.form button {
+    font-size: inherit;
+    font-family: inherit;
+    border: 1px solid lightgray;
+    border-radius: .25em;
+    padding: .25em .5em;
+}
+
+.form button:focus {
+    outline: none;
+    border-color: darkslateblue;
+}
