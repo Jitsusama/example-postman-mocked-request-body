@@ -25,9 +25,9 @@ const Uri = ({uri, onChange}) => {
 const Traditional = ({postUri}) => <form
     action={postUri} method="POST" className={s.form}>
     <label>Username:<input
-        id="username" type="text"/></label>
+        name="username" type="text"/></label>
     <label>Password:<input
-        id="password" type="password" autoComplete="password"/></label>
+        name="password" type="password" autoComplete="password"/></label>
     <button type="submit">Login</button>
 </form>
 
