@@ -49,19 +49,19 @@ const Scripted = ({apiUri}) => {
 
     switch (state) {
         case 'error':
-            return <>
+            return <div className={s.form}>
                 <p>Login failed.</p>
                 <button type="button" onClick={() => setState('initial')}>
                     Back
                 </button>
-            </>
+            </div>
         case 'loggedIn':
-            return <>
+            return <div className={s.form}>
                 <p>Login successful.</p>
                 <button type="button" onClick={() => setState('initial')}>
                     Back
                 </button>
-            </>
+            </div>
         default:
             return <form onSubmit={login} className={s.form}>
                 <label>Username:<input
